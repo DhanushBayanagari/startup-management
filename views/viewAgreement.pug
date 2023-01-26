@@ -11,11 +11,6 @@ header.header
     a.logo(href='#') Web Warriors
     nav.navbar
       a(href='/home') Home
-      a(href='/create') Create
-      a(href='/viewStartUp') View Startups
-      a(href='/viewSelected') Selected Start-ups
-      a(href='/query') Create-Query
-      a(href='/viewAgreement') view-agreement
 
     #menu-btn.fas.fa-bars
 section.display
@@ -40,7 +35,7 @@ section.display
                         p=s.email
                         h4 SHARE TO COMPANY in %: 
                         p=s.perShareCmp
-                        h4 SHARE TO COMPANY in %: 
+                        h4 SHARE TO STARTUP in %: 
                         p=s.perShareSin
                         
                         a(href=`/acceptAgreement/${s.Sid}/${s.aId}`)

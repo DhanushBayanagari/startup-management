@@ -8,11 +8,39 @@ const db = sql.createConnection({
 });
 const express = require("express");
 const { response } = require("../app");
+let user;
+let id;
 exports.base = (req, res) => {
   if (req.cookies.jwt) {
-    res.status(200).render("base");
+   id=jwt.verify(
+    req.cookies.jwt,
+    "dbmsminiproject@5thsem@cse@cmrit$bengalore&karnataka",
+    function (err, decoded)
+
+    { if(err)
+      {
+        res.status(200).render('login');
+      }
+        return decoded.id;   
+    }
+  );
   }
-  res.status(200).render("login");
+ 
+  const qry= `SELECT * FROM USER WHERE id=${id}`
+  db.query(qry, (err, response) => {
+    
+    if(response)
+    {
+      
+      res.status(200).render("base", { response });}
+    else
+    {
+      res.status(200).render("login");
+    }
+    
+  });
+  
+  
 };
 
 exports.chat = (req, res) => {

@@ -11,13 +11,21 @@ header.header
   section.flex
     a.logo(href='#') Web Warriors
     nav.navbar
-      a(href='/home') Home
-      a(href='/create') Create
-      a(href='/viewStartUp') View Startups
-      a(href='/viewSelected') Selected Start-ups
-      a(href='/query') Create-Query 
-      a(href='/viewAgreement') view-agreement
-    
+      if(response[0].roles=='company')
+        a(href='/home') Home
+        a(href='/viewStartUp') View Startups
+        a(href='/viewSelected') Selected Start-ups
+        a(href='/query') Create-Query 
+        form(class="logout--form" style="display:inline;")
+                  input.btn1(type="submit" value="logout" id="logout" style="margin-left:20px; width:100px; height:auto; display:inline;") 
+      if(response[0].roles=='startupInit')
+        a(href='/home') Home
+        a(href='/create') Create
+        a(href='/viewStartUp') View Startups
+        a(href='/query') Create-Query 
+        a(href='/viewAgreement') view-agreement
+        form(class="logout--form" style="display:inline;")
+                  input.btn1(type="submit" value="logout" id="logout" style="margin-left:20px; width:100px; height:auto; display:inline;") 
     #menu-btn.fas.fa-bars
 section#home.home
   .row
@@ -66,3 +74,5 @@ section.footer
     span(style='color: green;') Web Warriors
     | @all rights reserved
 script(src='/js/script.js')
+script(src='/js/logout.js')
+script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js") 
